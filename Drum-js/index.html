@@ -50,15 +50,18 @@ h1{
 <audio data-do="c" src="lol3.mp3"></audio>
 <audio data-do="d" src="lol4.mp3"></audio>
 <audio data-do="e" src="lol5.mp3"></audio>
+
 <script>
 document.addEventListener("keydown",function(e){
-    audio=document.querySelector(`audio[data-do='${e.key}']`)
+    const audio=document.querySelector(`audio[data-do='${e.key}']`)
     key=document.querySelector(`#${e.key}`)
     audio.currentTime=0
     console.log(key)
     key.classList.add('doing')
     audio.play()
+    
 })
+
 
 
 </script>

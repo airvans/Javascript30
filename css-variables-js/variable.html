@@ -20,7 +20,7 @@
         .box{
             width:100px;
             height: 100px;
-            margin: 10px;
+            margin: var(--inc);
             background-color:var(--color);
         }
     </style>
@@ -40,12 +40,29 @@
       </div>  
     </div>
     <script>
-       
-       document.querySelector("input[type='color']").addEventListener("change",function(){
-        var a = document.querySelector(":root")
-        console.log(this)
-        a.style.setProperty("--color",`${this.value}`)
-       })
+
+var a = document.querySelectorAll("input")
+var b=document.querySelector(":root")
+
+function handleupdate(){
+    const val = this.value
+    if(typeof(val)==="number"){
+      b.style.setProperty("--inc",`${this.value}` + `px`)
+    }
+    b.style.setProperty("--color",`${this.value}`)
+}
+
+a.forEach(element => {
+ element.addEventListener('change',handleupdate)
+ element.addEventListener('mousemove',handleupdate)
+});
+
+
+      //  document.querySelector("input[type='color']").addEventListener("change",function(){
+      //   var a = document.querySelector(":root")
+      //   console.log(this)
+      //   a.style.setProperty("--color",`${this.value}`)
+      //  })
        
       
    

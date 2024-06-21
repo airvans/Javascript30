@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+
+.panel{
+    display: flex; 
+    min-height: 100vh;
+    overflow: hidden;
+}
+.hello{
+     /* width:100%;  */
+    /* height:700px; */
+    transition:background-color 10s;
+    text-align: center;
+}
+
+.change{
+    background-color: blanchedalmond;
+    flex: 1;
+}
+
+.hello p:nth-child(2) {
+      font-size: 4em;
+    }
+
+.hello p {
+      text-transform: uppercase;
+      font-family: 'Amatic SC', cursive;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+      font-size: 2em;
+    }
+</style>
+<body>
+    <div class="panel">
+    <div class="hello" data-color="1">
+        <p>Give</p>
+      <p>All</p>
+      <p>You can</p>
+    </div>
+    <div class="hello" data-color="2" >
+        <p>Experience</p>
+      <p>It</p>
+      <p>Today</p>
+    </div>
+    <div class="hello" data-color="3" >
+        <p>Give</p>
+      <p>Take</p>
+      <p>Receive</p>
+    </div>
+    <div class="hello" data-color="4">
+        <p>Hey</p>
+      <p>Let's</p>
+      <p>Dance</p>
+    </div>
+   </div>
+<script>
+
+    function dosomething(element){
+       element.classList.add("change")
+    }
+
+    function dosomethingelse(e){
+        console.log(e.propertyName);
+        this.classList.remove("change")
+    }
+    const a = document.querySelectorAll(".hello")
+    
+    a.forEach(element => element.addEventListener("click",()=>{
+        dosomething(element)   
+    }));
+    a.forEach(item=>item.addEventListener("transitionrun",dosomethingelse))
+   </script>
+</body>
+</html>

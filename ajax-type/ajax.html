@@ -21,13 +21,43 @@
     const city=[]
     fetch(endpoint).then(response=>response.json()).then(data=>city.push(...data))
 
-   function findMatches(wordToMatch, cities) {
-    return cities.filter(place => {
-    // here we need to figure out if the city or state matches what was searched
+
+   function findMatches(wordToMatch, city) {
+    return city.filter(place => {
     const regex = new RegExp(wordToMatch, 'gi');
     return place.city.match(regex) || place.state.match(regex)
   });
   }
+
+
+  
+
+
+
+   function display(values){
+    const hello = findMatches(this.value, city);
+    const html = hello.map(x=>{
+      return `<li>
+        <span>${x.city}</span>
+        <span>${x.state}</span>
+        <li>`
+    }).join('')
+
+    suggestion.innerHTML=html
+  }
+
+  
+
+  //  function display(values){
+  //   find = findMatches(this.value,city)
+  //   console.log(find);
+  // }
+
+const values = document.querySelector(".search")
+const suggestion=document.querySelector(".suggestions")
+
+values.addEventListener("change",display)
+values.addEventListener("keyup",display)
 
 
 </script>

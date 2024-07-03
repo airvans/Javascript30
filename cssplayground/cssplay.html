@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+    .texting{
+        height: 100px;
+        width: 200px;
+        background-color: grey;
+        transition: width 2s, background-color 4s ease-in-out;
+    }
+    
+    .adder{
+        background-color: yellow;
+        width: 600px;
+    }
+    
+    </style>
+    <div class="texting" onmouseover="adder(this)">a box</div>
+    <div class="texting" onmouseover="adder(this)">a box</div>
+    <div class="texting" onmouseover="adder(this)">a box</div>
+    
+    
+    
+    <script>
+    document.querySelector(".texting").addEventListener("transitionend",remover)
+    document.addEventListener("transitionend",tester)
+    function adder(e){
+    
+        e.classList.add("adder")
+    
+    }
+    
+    function remover(){
+       this.classList.remove("adder")
+    }
+    function tester(a){
+        a.srcElement.classList.remove("adder")
+    }
+</script>    
+</body>
+</html>

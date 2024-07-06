@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // start with strings, numbers and booleans
+
+        // a1="boy"
+        // a2=a1
+        // console.log(a1,a2);
+
+        // a1="girl"
+        // console.log(a1,a2);
+
+        // Let's say we have an array
+        const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+         
+        // group = players
+
+        // console.log(players,group)
+        // group[1]="belliham"
+        // console.log(players,group)
+
+
+
+        // and we want to make a copy of it.
+    
+        // You might think we can just do something like this:
+    
+        // however what happens when we update that array?
+    
+        // now here is the problem!
+    
+        // oh no - we have edited the original array too!
+    
+        // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+    
+        // So, how do we fix this? We take a copy instead!
+       group1 = players.slice()
+
+       console.log(players,group1)
+       group1[1]="belliham"
+       console.log(players,group1)
+
+
+
+       group2 = [...players]
+
+       console.log(players,group2)
+       group2[1]="belliham"
+       console.log(players,group2)
+
+
+        // one way
+    
+        // or create a new array and concat the old one in
+    
+        // or use the new ES6 Spread
+    
+        // now when we update it, the original one isn't changed
+    
+        // The same thing goes for objects, let's say we have a person object
+    
+        // with Objects
+        const person = {
+          name: 'Wes Bos',
+          age: 80
+        };
+    
+        // and think we make a copy:
+         somep = person
+
+         console.log(person,somep);
+
+         somep.name="lile"
+
+         console.log(person,somep);
+
+        // how do we take a copy instead?
+         somep1 = JSON.parse(JSON.stringify(person))
+          
+         console.log(person,somep1);
+
+         somep1.name="lile222"
+
+         console.log(person,somep1);
+        // We will hopefully soon see the object ...spread
+
+        somep2 = Object.assign({},person,{age:44})
+
+        console.log(person,somep2);
+
+        somep2.name="lile222"
+
+         console.log(person,somep2);
+    
+        // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    
+      </script>
+    
+</body>
+</html>

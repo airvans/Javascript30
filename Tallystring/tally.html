@@ -191,12 +191,18 @@
  
    const b1 = arr.map((x)=>converttoseconds(x))
 
-    b1.reduce((x,y,)=>{
+    let c1 = b1.reduce((x,y)=>{
+        return x+y
+    },0)
 
-    })
+    let secondsLeft = c1;
+    const hours = Math.floor(secondsLeft / 3600);
+    secondsLeft = secondsLeft % 3600;
 
-    console.log(b1)
+    const mins = Math.floor(secondsLeft / 60);
+    secondsLeft = secondsLeft % 60;
 
+    console.log(hours, mins, secondsLeft);
     
     function converttoseconds(obj){
        split=obj.split(":")  

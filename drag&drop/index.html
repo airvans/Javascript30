@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:600px;
+}
+
+.box{
+   width:300px;
+   height:300px;
+   margin:160px;
+   padding:5px;
+   background: rgb(175, 174, 174);
+}
+
+.item{
+   width:300px;
+   height:70px;
+   background: rgb(218, 217, 217);
+   margin:1px;
+
+}
+
+</style>
+<body>
+<div class="box one">
+<div id="p1" class="item three" draggable="true" ></div>
+<div id="p1" class="item four" draggable="true" ></div>
+
+
+</div>
+
+<div class="box two" >
+<div id="p1" class="item one" draggable="true" ></div>
+<div id="p1" class="item two" draggable="true" ></div>
+
+</div>
+
+
+
+<script>
+    const container = document.querySelectorAll(".box")
+    const a = document.querySelector(".item")
+
+
+    document.addEventListener('dragstart',(e)=>{
+         e.dataTransfer.dropEffect = "move"
+         e.dataTransfer.setData("hello",e.target.classList.value)
+    })
+
+    
+    container.forEach(item=>{
+        item.addEventListener("dragover",(e)=>{
+            e.preventDefault()
+           
+        })
+
+        item.addEventListener("drop",(e)=>{
+          const data = e.dataTransfer.getData("hello")
+          ele = data.split(' ')
+          e.target.appendChild(document.querySelector(`.${ele[0]},.${ele[1]}`));
+        })
+    }
+    )
+     
+
+
+
+
+
+
+      /*  
+        x.addEventListener("drag",()=>console.log("start"))
+
+        x.addEventListener("dragend",()=>console.log("end"))
+
+        x.addEventListener("dragenter",()=>console.log("dragenter"))
+
+        x.addEventListener("dragleave",()=>console.log("dragleave"))
+
+        x.addEventListener("drop",()=>console.log("dropped"))
+
+        x.addEventListener("dragover",()=>console.log("dragover"))
+
+        x.addEventListener("dragstart",()=>console.log("dragstart"))*/
+
+
+
+
+    
+
+
+
+</script>
+</body>
+</html>
